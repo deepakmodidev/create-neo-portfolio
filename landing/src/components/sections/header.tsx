@@ -95,7 +95,7 @@ function Header() {
             asChild
           >
             <a
-              href="https://github.com/decodewithdeepak/create-neo-portfolio"
+              href="https://github.com/deepakmodidev/create-neo-portfolio"
               target="_blank"
               rel="noopener noreferrer"
             >

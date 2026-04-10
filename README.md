@@ -1,14 +1,14 @@
 # 🚀 Neo Portfolio CLI & Template
 
 <p align="left">
-  <a href="https://github.com/decodewithdeepak/create-neo-portfolio/stargazers" target="_blank">
-    <img src="https://img.shields.io/github/stars/decodewithdeepak/create-neo-portfolio?style=social" alt="GitHub stars" />
+  <a href="https://github.com/deepakmodidev/create-neo-portfolio/stargazers" target="_blank">
+    <img src="https://img.shields.io/github/stars/deepakmodidev/create-neo-portfolio?style=social" alt="GitHub stars" />
   </a>
-  <a href="https://github.com/decodewithdeepak/create-neo-portfolio/network/members" target="_blank">
-    <img src="https://img.shields.io/github/forks/decodewithdeepak/create-neo-portfolio?style=social" alt="GitHub forks" />
+  <a href="https://github.com/deepakmodidev/create-neo-portfolio/network/members" target="_blank">
+    <img src="https://img.shields.io/github/forks/deepakmodidev/create-neo-portfolio?style=social" alt="GitHub forks" />
   </a>
-  <a href="https://github.com/decodewithdeepak/create-neo-portfolio" target="_blank">
-    <img src="https://komarev.com/ghpvc/?username=decodewithdeepak&label=Views&color=blue&style=flat" alt="Profile views" />
+  <a href="https://github.com/deepakmodidev/create-neo-portfolio" target="_blank">
+    <img src="https://komarev.com/ghpvc/?username=deepakmodidev&label=Views&color=blue&style=flat" alt="Profile views" />
   </a>
   <a href="https://www.npmjs.com/package/create-neo-portfolio" target="_blank">
     <img src="https://img.shields.io/npm/v/create-neo-portfolio?color=cb3837&logo=npm" alt="NPM version" />
@@ -30,7 +30,7 @@ Create a modern, customizable developer portfolio in seconds—using a single CL
 
 ## Reference & Inspiration
 
-**See what you can build:** [decodewithdeepak.vercel.app](https://decodewithdeepak.vercel.app)
+**See what you can build:** [deepakmodidev.vercel.app](https://deepakmodidev.vercel.app)
 
 <p align="center">
   <img src="./public/example.webp" alt="Demo Screenshot" width="700" />

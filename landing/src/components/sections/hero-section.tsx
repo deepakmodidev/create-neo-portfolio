@@ -13,7 +13,7 @@ export default function Hero() {
               <span className="font-medium">Launch in 120 Seconds</span>
               <Zap className="h-3 w-3 sm:h-4 sm:w-4 text-orange-500" />
               <a
-                href="https://decodewithdeepak.vercel.app"
+                href="https://deepakmodidev.vercel.app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center xs:inline-flex hover:text-blue-300 transition-colors"

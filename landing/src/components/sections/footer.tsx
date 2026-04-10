@@ -34,7 +34,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/decodewithdeepak"
+                  href="https://github.com/deepakmodidev"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-sm"
@@ -68,16 +68,16 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-400">
             <span>Built by</span>
             <a
-              href="https://github.com/decodewithdeepak"
+              href="https://github.com/deepakmodidev"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 text-white font-semibold transition-colors"
             >
-              decodewithdeepak
+              deepakmodidev
             </a>
             <span className="hidden sm:inline">•</span>
             <a
-              href="https://github.com/decodewithdeepak/create-neo-portfolio"
+              href="https://github.com/deepakmodidev/create-neo-portfolio"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-gray-300 text-white flex items-center gap-1 font-semibold transition-colors"
