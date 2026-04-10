@@ -24,7 +24,7 @@ export default function Footer() {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="https://www.linkedin.com/in/deepakmodi1/"
+                  href="https://www.linkedin.com/in/deepakmodidev/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors text-sm"

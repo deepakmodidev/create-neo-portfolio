@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "npx and done! Create a modern, responsive portfolio with Next.js, Tailwind CSS, and TypeScript. Minimal setup, maximum impact.",
     images: ["/banner.png"],
-    creator: "@deepakmodi_io",
+    creator: "@deepakmodidev",
   },
   alternates: {
     canonical: "https://create-neo-portfolio.vercel.app",
