@@ -1,6 +1,6 @@
 {
   "name": "create-neo-portfolio",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "CLI to scaffold a modern developer portfolio with Next.js and Tailwind CSS.",
   "main": "index.js",
   "bin": {

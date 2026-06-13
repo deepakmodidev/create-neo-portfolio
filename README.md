@@ -7,111 +7,91 @@
   <a href="https://github.com/deepakmodidev/create-neo-portfolio/network/members" target="_blank">
     <img src="https://img.shields.io/github/forks/deepakmodidev/create-neo-portfolio?style=social" alt="GitHub forks" />
   </a>
-  <a href="https://github.com/deepakmodidev/create-neo-portfolio" target="_blank">
-    <img src="https://komarev.com/ghpvc/?username=deepakmodidev&label=Views&color=blue&style=flat" alt="Profile views" />
-  </a>
   <a href="https://www.npmjs.com/package/create-neo-portfolio" target="_blank">
     <img src="https://img.shields.io/npm/v/create-neo-portfolio?color=cb3837&logo=npm" alt="NPM version" />
   </a>
   <a href="https://www.npmjs.com/package/create-neo-portfolio" target="_blank">
     <img src="https://img.shields.io/npm/dt/create-neo-portfolio?color=cb3837&logo=npm" alt="NPM downloads" />
   </a>
+  <a href="./LICENSE" target="_blank">
+    <img src="https://img.shields.io/npm/l/create-neo-portfolio?color=brightgreen" alt="License" />
+  </a>
 </p>
 
-Create a modern, customizable developer portfolio in seconds—using a single CLI command! Built with Next.js, TypeScript, and Tailwind CSS. Perfect for showcasing your projects, skills, and experience with minimal setup.
+Create a modern, customizable developer portfolio in seconds — with a single command. Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS 4**. Zero config, no API keys, no environment variables — just edit one file and deploy.
 
 <p align="center">
-  <img src="./public/banner.webp" alt="Neo Portfolio CLI" width="700" /
-  </p>
+  <img src="./public/banner.webp" alt="Neo Portfolio CLI" width="700" />
+</p>
 
-🌐 [View the Landing Page](https://create-neo-portfolio.vercel.app/)
+🌐 [View the Landing Page](https://create-neo-portfolio.vercel.app/) &nbsp;•&nbsp; ✨ [See a live example](https://deepakmodidev.vercel.app)
 
 ---
 
-## Reference & Inspiration
-
-**See what you can build:** [deepakmodidev.vercel.app](https://deepakmodidev.vercel.app)
-
-<p align="center">
-  <img src="./public/example.webp" alt="Demo Screenshot" width="700" />
-</p>
-
-## Quick Start (as a CLI)
-
-1. **Create your portfolio using the CLI:**
+## ⚡ Quick Start
 
 ```bash
-# Interactive mode (will prompt for project name, default: neo-portfolio)
+# Interactive (prompts for a project name, default: neo-portfolio)
 npx create-neo-portfolio
 
-# Or provide a name directly
+# Or pass the name directly
 npx create-neo-portfolio my-portfolio
 cd my-portfolio
 npm run dev
 ```
 
-> This will scaffold your portfolio, install dependencies automatically, and start the local dev server.
-
-2. **Edit your content:**
-
-- Open `src/components/constants/data.ts` and fill in your details (name, social links, projects, etc.).
-- Update the contact form endpoint (`FORM_ENDPOINT`) with your own Formspree or similar service.
-- Cleanup the section you don't need (like blog, if not required).
-- Customize sections/components as needed for your portfolio.
-
-3. **Deploy:**
-
-- Deploy to [Vercel](https://vercel.com/import) (recommended) or your favorite platform.
+The CLI scaffolds the project, installs dependencies, initializes a git repo, and you're ready to go. Open [http://localhost:3000](http://localhost:3000).
 
 ---
 
-## What Can You Build?
+## 🎨 Make It Yours
 
-- A beautiful, fast, clean and fully responsive developer portfolio
-- Show off your projects, experience, education, and skills
-- Add a blog, contact form, and more—customize as you like!
+Almost everything is driven from two files:
 
----
+| What | Where |
+| --- | --- |
+| Name, title, bio, location, email, social usernames | `src/app/constants/data.ts` → `ABOUT_ME`, `USER_NAMES`, `SOCIAL_LINKS` |
+| Skills (icon grid) | `src/app/constants/data.ts` → `SKILLS` ([skillicons.dev](https://skillicons.dev) slugs) |
+| Experience, education, testimonials | `src/app/constants/data.ts` → `EXPERIENCE`, `EDUCATION`, `TESTIMONIALS` |
+| Projects (+ their detail pages) | `src/app/constants/projects.ts` → `PROJECTS` |
 
-## Customization
+Then:
 
-- **Branding:**
-  - Change your name/title in `data.ts` and it will update everywhere (navbar, meta tags, etc.).
-- **Sections:**
-  - Remove or add sections by editing `src/components/sections/` and updating `src/app/page.tsx`.
-- **Social Links:**
-  - Leave any social link blank in `data.ts` to hide its button automatically.
-- **Contact Form:**
-  - Set your own endpoint in `FORM_ENDPOINT` in `data.ts`.
-- **Blog:**
-  - Remove the blog section if you don't need it (see `page.tsx` and `navbar.tsx`).
+- **Images** — replace the placeholders in `public/` and `src/app/opengraph-image.png` with your own.
+- **Contact form** — set `CONTACT_FORM_ENDPOINT` in `data.ts` (free endpoint at [Formspree](https://formspree.io/forms)).
+- **Meeting button** — set your cal.com handle in `data.ts` (`USER_NAMES.calUsername`).
+- **Sections** — add, remove, or reorder them in `src/app/page.tsx`.
 
----
-
-## Features
-
-- Minimal, modern design
-- Fully responsive
-- Easy to customize
-- Dynamic OpenGraph/Twitter images
-- Dark and light theme support
-- No personal data included—ready for your info!
+> Change your name in `data.ts` and it updates everywhere — navbar, metadata, JSON-LD, sitemap, and the GitHub contribution graph all follow automatically.
 
 ---
 
-## Credits
+## ✨ Features
 
-- Built with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/)
-- Inspired by the open-source dev community
+- **Modern stack** — Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + TypeScript
+- **Zero config** — no environment variables or API keys required
+- **Content-driven** — everything lives in `data.ts` / `projects.ts`
+- **Dedicated project pages** — each project gets its own `/projects/<slug>` route
+- **Live GitHub contribution graph** as a banner
+- **Dark / light theme** with system preference + smooth toggle
+- **SEO-ready** — metadata, JSON-LD, OpenGraph image, `sitemap.xml`, `robots.txt`
+- **Polished details** — animated canvas cursor, glassy buttons, smooth scrolling
+- **Fully responsive** and fast out of the box
 
 ---
 
-## License
+## 🚀 Deploy
+
+Deploy to [Vercel](https://vercel.com/import) (recommended) or any platform that supports Next.js — push to GitHub and import the repo.
+
+---
+
+## 🙌 Credits
+
+Built by **[Deepak Modi](https://deepakmodidev.vercel.app)** with [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/), and [TypeScript](https://www.typescriptlang.org/).
+
+If this helped you, a ⭐ on the [repo](https://github.com/deepakmodidev/create-neo-portfolio) means a lot!
+
+## 📄 License
 
 [MIT](LICENSE)
-
----
-
-## Need Help?
-
-Open an issue or reach out on GitHub!
