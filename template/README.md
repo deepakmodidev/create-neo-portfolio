@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 My Developer Portfolio
 
-## Getting Started
+This portfolio was created using the **[Neo Portfolio CLI](https://github.com/deepakmodidev/create-neo-portfolio)**, built and maintained by **[Deepak Modi](https://deepakmodidev.vercel.app)**.
 
-First, run the development server:
+Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS 4** — fast, responsive, dark/light themed, and SEO-ready. No environment variables or API keys required.
+
+---
+
+## ✨ Make It Yours
+
+Almost everything is driven from two files — edit these first:
+
+| What | Where |
+| --- | --- |
+| Name, title, bio, location, email, social usernames | `src/app/constants/data.ts` → `ABOUT_ME`, `USER_NAMES`, `SOCIAL_LINKS` |
+| Skills (icon grid) | `src/app/constants/data.ts` → `SKILLS` ([skillicons.dev](https://skillicons.dev) slugs) |
+| Experience, education, testimonials | `src/app/constants/data.ts` → `EXPERIENCE`, `EDUCATION`, `TESTIMONIALS` |
+| Projects (+ their detail pages) | `src/app/constants/projects.ts` → `PROJECTS` |
+
+Then:
+
+- **Images** — replace the placeholders in `public/` (your `placeholder-avatar.png`, project screenshots, `src/app/opengraph-image.png`).
+- **Contact form** — set your own endpoint in `src/components/sections/contact.tsx` (`FORM_CONFIG.endpoint`). Create a free one at [Formspree](https://formspree.io/forms).
+- **Meeting button** — set your cal.com handle in `data.ts` (`USER_NAMES.calUsername`).
+- **Sections** — add, remove, or reorder sections in `src/app/page.tsx`.
+
+> The GitHub contribution graph, project pages, sitemap, and robots all update automatically from the values above — no extra config needed.
+
+---
+
+## 🛠 Run Locally
 
 ```bash
+npm install   # not needed if you scaffolded with the CLI
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Deploy
 
-## Learn More
+Deploy to [Vercel](https://vercel.com/import) (recommended) or any platform that supports Next.js — just push to GitHub and import the repo.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🙌 Credits
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Created with ❤️ using the **[Neo Portfolio CLI](https://github.com/deepakmodidev/create-neo-portfolio)** by [Deepak Modi](https://deepakmodidev.vercel.app).
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+If you build something with it, a ⭐ on the repo is appreciated!
