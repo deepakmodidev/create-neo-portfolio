@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ABOUT_ME, SOCIAL_LINKS } from "@/components/constants/data";
+import { SOCIAL_LINKS, ABOUT_ME } from "@/app/constants/data";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 import { FaXTwitter, FaInstagram } from "react-icons/fa6";
-import { SiLeetcode, SiPeerlist } from "react-icons/si";
-import { FaBlog } from "react-icons/fa";
+import { SiPeerlist } from "react-icons/si";
 
 // =============================================
 // SOCIAL BUTTONS DATA
@@ -25,29 +24,14 @@ const SOCIAL_BUTTONS = [
     icon: <FaXTwitter className="w-5 h-5" />,
   },
   {
-    href: SOCIAL_LINKS.leetcode,
-    label: "LeetCode",
-    icon: <SiLeetcode className="w-5 h-5" />,
-  },
-  {
-    href: SOCIAL_LINKS.peerlist,
-    label: "Peerlist",
-    icon: <SiPeerlist className="w-5 h-5" />,
-  },
-  {
     href: SOCIAL_LINKS.instagram,
     label: "Instagram",
     icon: <FaInstagram className="w-5 h-5" />,
   },
   {
-    href: SOCIAL_LINKS.blog,
-    label: "Blog",
-    icon: (
-      <>
-        <FaBlog className="w-5 h-5" /> Blog
-      </>
-    ),
-    className: "flex items-center gap-2 font-medium",
+    href: SOCIAL_LINKS.peerlist,
+    label: "Peerlist",
+    icon: <SiPeerlist className="w-5 h-5" />,
   },
   {
     href: SOCIAL_LINKS.resume,
@@ -76,31 +60,30 @@ const SOCIAL_BUTTONS = [
 // =============================================
 export default function AboutMe() {
   return (
-    <section className="pb-10">
-      <div className="mb-8">
-        {ABOUT_ME.description.map((para, i) => (
-          <p
-            key={i}
-            className="mb-4 text-[15px] sm:text-base text-muted-foreground text-justify"
-          >
-            {para}
-          </p>
-        ))}
+    <section id="about" className="divide-y divide-dashed divide-border">
+      <div className="p-4">
+        <div className="space-y-4 text-[15px] sm:text-base text-muted-foreground text-justify leading-relaxed">
+          {ABOUT_ME.description.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))}
+        </div>
       </div>
 
-      <div className="flex gap-3 flex-wrap">
-        {SOCIAL_BUTTONS.filter((btn) => btn.href && btn.href.trim() !== "").map((btn) => (
-          <Link
-            key={btn.label}
-            href={btn.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`px-3 py-2 rounded-lg btn text-sm hover:scale-95 transition-transform ${btn.className || ""}`}
-            aria-label={btn.label}
-          >
-            {btn.icon}
-          </Link>
-        ))}
+      <div className="p-4">
+        <div className="flex gap-3 flex-wrap">
+          {SOCIAL_BUTTONS.map((btn) => (
+            <Link
+              key={btn.label}
+              href={btn.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-3 py-2 btn text-sm ${btn.className || ""}`}
+              aria-label={btn.label}
+            >
+              {btn.icon}
+            </Link>
+          ))}
+        </div>
       </div>
     </section>
   );

@@ -1,10 +1,19 @@
 "use client";
 
-import { User, Mail } from "lucide-react";
-import { LuMessageSquareShare } from "react-icons/lu";
+import {
+  User,
+  Mail,
+  Calendar,
+  Github,
+  Linkedin,
+  ArrowRight,
+} from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { FaRegCommentDots } from "react-icons/fa";
+import { SiPeerlist } from "react-icons/si";
 import { useState, ChangeEvent, FormEvent, ComponentType } from "react";
-import { FORM_ENDPOINT } from "../constants/data";
+import Meeting from "../ui/cal-meeting";
+import { SOCIAL_LINKS } from "@/app/constants/data";
 
 // =============================================
 // TYPE DEFINITIONS
@@ -32,7 +41,8 @@ type SetStateFunction<T> = (value: T | ((prev: T) => T)) => void;
 // FORM CONFIGURATION
 // =============================================
 const FORM_CONFIG = {
-  endpoint: FORM_ENDPOINT,
+  // Create a free form at https://formspree.io and paste your endpoint here.
+  endpoint: "https://formspree.io/f/your-form-id",
   initialData: { name: "", email: "", message: "" } as FormData,
   fields: [
     {
@@ -55,7 +65,7 @@ const FORM_CONFIG = {
       label: "Message",
       icon: FaRegCommentDots,
       placeholder: "What would you like to discuss?",
-      rows: 4,
+      rows: 5,
     },
   ] as FormField[],
 };
@@ -102,43 +112,41 @@ const renderField = (
 ) => {
   const Icon = field.icon;
   const commonClasses =
-    "w-full pl-10 pr-4 py-2 rounded-lg border border-border bg-background text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-border-hover";
+    "flex-1 py-4 bg-transparent text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none transition-colors duration-200";
 
   return (
-    <div key={field.name}>
-      <label htmlFor={field.name} className="block text-sm font-medium mb-2">
-        {field.label}
-      </label>
-      <div className="relative text-sm">
-        <div
-          className={`absolute ${field.type === "textarea" ? "top-3" : "inset-y-0"} left-3 flex items-center text-muted-foreground`}
-        >
-          <Icon className="w-5 h-5" />
-        </div>
-        {field.type === "textarea" ? (
-          <textarea
-            id={field.name}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange}
-            required
-            placeholder={field.placeholder}
-            rows={field.rows}
-            className={`${commonClasses} resize-none`}
-          />
-        ) : (
-          <input
-            type={field.type}
-            id={field.name}
-            name={field.name}
-            value={formData[field.name]}
-            onChange={handleChange}
-            required
-            placeholder={field.placeholder}
-            className={commonClasses}
-          />
-        )}
+    <div
+      key={field.name}
+      className="flex items-start gap-4 px-4 group transition-colors focus-within:bg-muted/30"
+    >
+      <div className="py-4 flex items-center text-muted-foreground/60 transition-colors duration-200 group-focus-within:text-foreground">
+        <Icon className="w-5 h-5" />
       </div>
+      {field.type === "textarea" ? (
+        <textarea
+          id={field.name}
+          name={field.name}
+          value={formData[field.name]}
+          onChange={handleChange}
+          required
+          aria-label={field.label}
+          placeholder={field.placeholder}
+          rows={field.rows}
+          className={`${commonClasses} resize-none`}
+        />
+      ) : (
+        <input
+          type={field.type}
+          id={field.name}
+          name={field.name}
+          value={formData[field.name]}
+          onChange={handleChange}
+          required
+          aria-label={field.label}
+          placeholder={field.placeholder}
+          className={commonClasses}
+        />
+      )}
     </div>
   );
 };
@@ -151,7 +159,9 @@ const Contact = () => {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -161,45 +171,144 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-5">
-      <h2 className="text-xl font-semibold mb-4">let&apos;s connect.</h2>
+    <section id="contact">
+      <div className="flex items-center py-2 px-4 border-b border-dashed border-border text-foreground">
+        <h2 className="text-2xl font-semibold flex items-center">
+          let&apos;s connect.
+        </h2>
+      </div>
 
-      <div className="space-y-4">
-        <p className="text-sm text-muted-foreground">
-          I&apos;d love to hear from you! Whether you have a question, want to
-          discuss a project, or just want to say hi, feel free to reach out
-          using the form below.
-        </p>
+      <div className="grid grid-cols-1 lg:grid-cols-5 divide-y lg:divide-y-0 lg:divide-x divide-dashed divide-border">
+        {/* Contact Form */}
+        <div className="lg:col-span-3">
+          <div>
+            <div className="p-4 border-b border-dashed border-border">
+              <h3 className="text-xl font-medium mb-1">send a message.</h3>
+              <p className="text-sm text-muted-foreground">
+                Drop a message below to discuss projects or just say hi.
+              </p>
+            </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4 p-2">
-          {FORM_CONFIG.fields.map((field) =>
-            renderField(field, formData, handleChange)
-          )}
+            <form onSubmit={handleSubmit}>
+              <div className="border-b border-dashed border-border divide-y divide-dashed divide-border">
+                {FORM_CONFIG.fields.map((field) =>
+                  renderField(field, formData, handleChange)
+                )}
+              </div>
 
-          <button
-            type="submit"
-            disabled={status === "submitting"}
-            className={`w-full px-3 py-2 rounded-lg text-sm btn font-medium flex items-center justify-center gap-2 ${status === "submitting" ? "opacity-70 cursor-not-allowed" : ""}`}
-          >
-            {status === "submitting" ? (
-              "Sending..."
-            ) : (
-              <>
-                <span>Send Message</span>{" "}
-                <LuMessageSquareShare className="w-4 h-4" />
-              </>
-            )}
-          </button>
+              <div className="p-4">
+                <button
+                  type="submit"
+                  disabled={status === "submitting"}
+                  className={`btn w-full px-3 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 cursor-pointer group ${status === "submitting" ? "opacity-70 cursor-not-allowed" : ""}`}
+                >
+                  {status === "submitting" ? (
+                    "Sending..."
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
+                    </>
+                  )}
+                </button>
 
-          {status === "success" && (
-            <p className="text-green-600 text-sm text-center">
-              Got your message! I&apos;ll get back to you soon.
-            </p>
-          )}
-          {status === "error" && (
-            <p className="text-red-600 text-sm text-center">{errorMessage}</p>
-          )}
-        </form>
+                {status === "success" && (
+                  <p className="text-green-600 text-sm text-center">
+                    Got your message! I&apos;ll get back to you soon.
+                  </p>
+                )}
+                {status === "error" && (
+                  <p className="text-red-600 text-sm text-center">
+                    {errorMessage}
+                  </p>
+                )}
+              </div>
+            </form>
+          </div>
+        </div>
+
+        {/* Right Sidebar */}
+        <div className="lg:col-span-2 divide-y divide-dashed divide-border">
+          {/* Meeting Scheduler */}
+          <div className="flex flex-col items-start w-full">
+            <div className="p-4 border-b border-dashed border-border w-full">
+              <h3 className="text-xl font-medium mb-1">schedule a meeting.</h3>
+              <p className="text-sm text-muted-foreground">
+                Book a 30-minute call on Google Meet.
+              </p>
+            </div>
+
+            <div className="p-4 border-b border-dashed border-border w-full">
+              <h4 className="text-lg font-medium mb-1">
+                30-minute discovery call.
+              </h4>
+              <p className="text-sm text-muted-foreground">
+                Let&apos;s discuss your project goals.
+              </p>
+            </div>
+            <div className="p-4 w-full">
+              <Meeting />
+            </div>
+          </div>
+
+          {/* Social Media Links */}
+          <div className="flex flex-col items-start w-full">
+            <div className="p-4 border-b border-dashed border-border w-full">
+              <h3 className="text-xl font-medium mb-1">follow & connect.</h3>
+              <p className="text-sm text-muted-foreground">
+                Stay updated with my latest thoughts.
+              </p>
+            </div>
+
+            <div className="p-4 w-full flex justify-start">
+              <div className="grid grid-cols-4 gap-3 w-full max-w-[280px]">
+                {/* GitHub */}
+                <a
+                  href={SOCIAL_LINKS.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 btn flex items-center justify-center"
+                  title="GitHub"
+                >
+                  <Github className="w-5 h-5" />
+                </a>
+
+                {/* LinkedIn */}
+                <a
+                  href={SOCIAL_LINKS.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 btn flex items-center justify-center"
+                  title="LinkedIn"
+                >
+                  <Linkedin className="w-5 h-5" />
+                </a>
+
+                {/* Twitter */}
+                <a
+                  href={SOCIAL_LINKS.twitter}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 btn flex items-center justify-center"
+                  title="Twitter"
+                >
+                  <FaXTwitter className="w-5 h-5" />
+                </a>
+
+                {/* Peerlist */}
+                <a
+                  href={SOCIAL_LINKS.peerlist}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 btn flex items-center justify-center"
+                  title="Peerlist"
+                >
+                  <SiPeerlist className="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

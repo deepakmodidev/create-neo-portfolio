@@ -1,13 +1,53 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-border: hsl(var(--border));
+  --color-border-hover: hsl(var(--border-hover));
+  --color-accent: hsl(var(--accent));
+  --color-link: hsl(var(--link));
+  --color-hover-bg: hsl(var(--hover-bg));
+  --radius-sm: var(--radius);
+  --font-sans: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
+  --font-bricolage: var(--font-bricolage);
+}
+
+/* Lenis smooth scrolling support */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 @layer base {
   :root {
-    --background: 0 0% 97%;
-    --foreground: 0 0% 2%;
-    --muted: 0 0% 92%;
-    --muted-foreground: 0 0% 30%;
+    /* Light Mode */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 15%;
     --hover-bg: 142 76% 96%;
-    --border: 0 0% 70%;
+    --border: 0 0% 80%;
     --border-hover: 142 76% 46%;
     --accent: 0 0% 0%;
     --link: 142 76% 36%;
@@ -15,36 +55,33 @@
   }
 
   .dark {
-    --background: 0 0% 3%;
-    --foreground: 0 0% 98%;
-    --muted: 0 0% 8%;
-    --muted-foreground: 0 0% 60%;
+    /* Dark Mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 70%;
     --hover-bg: 142 76% 10%;
-    --border: 0 0% 30%;
+    --border: 0 0% 20%;
     --accent: 0 0% 100%;
     --link: 142 76% 46%;
   }
 
   * {
-    scroll-behavior: smooth;
-    font-family: var(--font-outfit);
+    font-family: var(--font-bricolage);
   }
 
   body {
     overflow-x: hidden;
-  }
-
-  body {
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     font-family:
-      var(--font-outfit),
+      var(--font-bricolage),
       -apple-system,
       BlinkMacSystemFont,
       "Segoe UI",
       Roboto,
       "Helvetica Neue",
-      Arial,
+      Arial;
   }
 
   ::selection {
@@ -56,10 +93,23 @@
     background: hsl(0, 0%, 100%);
     color: #000;
   }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--foreground));
+  }
 }
 
 @layer utilities {
-
   /* Links */
   a,
   .link {
@@ -72,21 +122,59 @@
     color: hsl(var(--link));
   }
 
-  /* Buttons */
+  /* Buttons — layered glass gradient with glossy top highlight */
   .btn {
-    background-color: hsl(var(--accent));
-    color: hsl(var(--background));
-    border: none;
+    background: linear-gradient(to bottom, #ffffff, #e9e9e9);
+    color: hsl(var(--foreground));
+    border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: var(--radius);
+    cursor: pointer;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    transition:
+      transform 0.1s ease,
+      box-shadow 0.15s ease;
   }
-
   .btn:hover {
-    background-color: hsl(var(--accent) / 0.85);
+    background: linear-gradient(to bottom, #ffffff, #f3f3f3);
+    transform: translateY(-1px);
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+  .btn:active {
+    transform: scale(0.985);
+    box-shadow:
+      0 0 1px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+  .dark .btn {
+    background: linear-gradient(to bottom, #2a2a2a, #161616);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  }
+  .dark .btn:hover {
+    background: linear-gradient(to bottom, #353535, #1d1d1d);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.7),
+      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  }
+  .dark .btn:active {
+    box-shadow:
+      0 0 1px rgba(0, 0, 0, 0.6),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
   }
 
   /* Badges */
   .badge {
-    background-color: hsl(var(--muted));
+    background-color: transparent;
     border: 1px solid hsl(var(--border));
     border-radius: var(--radius);
   }
@@ -95,59 +183,18 @@
     border-color: hsl(var(--border-hover));
   }
 
-  /* Boxes */
-  .box {
-    background-color: hsl(var(--muted));
-    border-radius: var(--radius);
+  /* View Transition API for theme toggle circular reveal effect */
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
   }
 
-  .box:hover {
-    background-color: hsl(var(--muted));
-    border-color: hsl(var(--border));
+  ::view-transition-new(root) {
+    z-index: 9999;
   }
 
-  /* Utility classes */
-  .accent {
-    color: hsl(var(--accent));
+  ::view-transition-old(root) {
+    z-index: 1;
   }
-
-  .text-muted-foreground {
-    color: hsl(var(--muted-foreground));
-  }
-
-  .text-foreground {
-    color: hsl(var(--foreground));
-  }
-
-  .bg-muted {
-    background-color: hsl(var(--muted));
-  }
-
-  .bg-accent {
-    background-color: hsl(var(--accent));
-    color: hsl(var(--background));
-  }
-
-  .bg-background {
-    background-color: hsl(var(--background));
-  }
-
-  .border-border {
-    border-color: hsl(var(--border));
-  }
-
-  /* Grid Pattern Desktop */
-  .grid-pattern {
-    -webkit-mask-image: linear-gradient(150deg, #000 0%, #000 2%, transparent 18%, transparent 100%);
-    mask-image: linear-gradient(150deg, #000 0%, #000 2%, transparent 18%, transparent 100%);
-  }
-
-  /* Mobile override */
-  @media (max-width: 768px) {
-    .grid-pattern {
-      -webkit-mask-image: linear-gradient(150deg, #000 0%, #000 0%, transparent 8%, transparent 100%);
-      mask-image: linear-gradient(150deg, #000 0%, #000 0%, transparent 8%, transparent 100%);
-    }
-  }
-
 }

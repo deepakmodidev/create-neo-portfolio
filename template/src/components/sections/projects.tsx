@@ -1,44 +1,79 @@
-import { ExternalLink, Github } from "lucide-react";
-import { FaArrowTrendUp } from "react-icons/fa6";
+"use client";
+
+import { ExternalLink, Github, MousePointerClick } from "lucide-react";
 import Link from "next/link";
-import { PROJECTS } from "@/components/constants/data";
+import { PROJECTS } from "@/app/constants/data";
+import { useState } from "react";
+import { generateSlug } from "@/lib/utils";
+import ImageTooltip from "@/components/ui/image-tooltip";
+import ImageMarquee from "@/components/ui/image-marquee";
+import CollapsibleGrid from "@/components/ui/collapsible-grid";
 
 export default function Projects() {
-  return (
-    <section className="py-5">
-      <h2 className="text-xl font-semibold mb-4">featured projects.</h2>
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-      <div className="space-y-8">
-        {PROJECTS.map((project) => (
-          <div key={project.name} className="relative">
-            <div className="space-y-2 border-l-1 border-muted pl-4">
-              <div className="flex items-center justify-between w-full">
-                <div className="flex flex-col flex-1">
-                  <h3 className="font-medium text-base text-left">
-                    {project.link ? (
+  const handleProjectClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // Mark that user navigated from main page
+    sessionStorage.setItem("navigatedFromMainPage", "true");
+  };
+
+  return (
+    <section id="projects">
+      <div className="flex items-center py-2 px-4 border-b border-dashed border-border">
+        <h2 className="text-2xl font-semibold flex items-center">
+          featured projects.
+        </h2>
+      </div>
+
+      <div className="border-b border-dashed border-border overflow-hidden">
+        <ImageMarquee />
+      </div>
+
+      <div className="relative divide-y divide-dashed divide-border">
+        {PROJECTS.map((project, index) => (
+          <CollapsibleGrid
+            key={project.name}
+            isExpanded={activeIndex === index}
+            onToggle={() =>
+              setActiveIndex(activeIndex === index ? null : index)
+            }
+            header={
+              <div className="flex items-center gap-3">
+                <div className="flex-1 min-w-0 space-y-0.5">
+                  <h3 className="font-medium text-base">
+                    <ImageTooltip
+                      imageSrc={
+                        project.images?.hero || "/placeholder-image.png"
+                      }
+                      imageAlt={`${project.name} preview`}
+                    >
                       <Link
-                        href={project.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`/projects/${generateSlug(project.name)}`}
                         className="link"
+                        onClick={handleProjectClick}
                       >
                         {project.name}
-                        <FaArrowTrendUp className="inline-block w-5 h-5 ml-2 align-text-bottom" />
+                        <MousePointerClick className="inline-block w-5 h-5 ml-1 align-text-bottom text-muted-foreground" />
                       </Link>
-                    ) : (
-                      project.name
-                    )}
+                    </ImageTooltip>
                   </h3>
-                  <p className="text-xs text-muted-foreground">Click to know more...</p>
+                  <p className="text-sm text-muted-foreground">
+                    {project.tagline}
+                  </p>
                 </div>
-                <div className="flex gap-2">
+
+                <div
+                  className="flex gap-2"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   {project.link && (
                     <Link
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-2 btn hover:scale-95 transition-transform"
-                      aria-label="View project"
+                      className="btn py-2 px-2.5"
+                      aria-label={`Visit ${project.name} live website`}
                     >
                       <ExternalLink className="w-4 h-4" />
                     </Link>
@@ -47,16 +82,19 @@ export default function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2 btn hover:scale-95 transition-transform"
-                    aria-label="View source code"
+                    className="btn py-2 px-2.5"
+                    aria-label={`View ${project.name} source code on GitHub`}
                   >
                     <Github className="w-4 h-4" />
                   </Link>
                 </div>
               </div>
-
-              <p className="text-sm text-muted-foreground leading-relaxed text-justify">
-                {project.description}
+            }
+          >
+            {/* Collapsible Details */}
+            <div className="space-y-4">
+              <p className="text-sm text-muted-foreground text-justify leading-relaxed">
+                {project.overview}
               </p>
 
               <div className="flex flex-wrap gap-1.5">
@@ -70,7 +108,7 @@ export default function Projects() {
                 ))}
               </div>
             </div>
-          </div>
+          </CollapsibleGrid>
         ))}
       </div>
     </section>
