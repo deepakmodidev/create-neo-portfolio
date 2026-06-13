@@ -41,6 +41,10 @@ export const SOCIAL_LINKS = {
   email: `mailto:${ABOUT_ME.email}?subject=Message%20from%20Website&body=Hi!%20I%27m...`,
 };
 
+// Contact form submission endpoint (used by the "send a message" form).
+// Create a free form at https://formspree.io/forms and paste your URL here.
+export const CONTACT_FORM_ENDPOINT = "https://formspree.io/f/your-form-id";
+
 export { PROJECTS } from "./projects";
 
 // Skill icons shown in the "technical skills" section.

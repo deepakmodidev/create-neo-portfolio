@@ -20,7 +20,7 @@ Almost everything is driven from two files — edit these first:
 Then:
 
 - **Images** — replace the placeholders in `public/` (your `placeholder-avatar.png`, project screenshots, `src/app/opengraph-image.png`).
-- **Contact form** — set your own endpoint in `src/components/sections/contact.tsx` (`FORM_CONFIG.endpoint`). Create a free one at [Formspree](https://formspree.io/forms).
+- **Contact form** — set `CONTACT_FORM_ENDPOINT` in `src/app/constants/data.ts`. Create a free one at [Formspree](https://formspree.io/forms).
 - **Meeting button** — set your cal.com handle in `data.ts` (`USER_NAMES.calUsername`).
 - **Sections** — add, remove, or reorder sections in `src/app/page.tsx`.
 

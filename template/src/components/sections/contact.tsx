@@ -13,7 +13,7 @@ import { FaRegCommentDots } from "react-icons/fa";
 import { SiPeerlist } from "react-icons/si";
 import { useState, ChangeEvent, FormEvent, ComponentType } from "react";
 import Meeting from "../ui/cal-meeting";
-import { SOCIAL_LINKS } from "@/app/constants/data";
+import { SOCIAL_LINKS, CONTACT_FORM_ENDPOINT } from "@/app/constants/data";
 
 // =============================================
 // TYPE DEFINITIONS
@@ -41,8 +41,7 @@ type SetStateFunction<T> = (value: T | ((prev: T) => T)) => void;
 // FORM CONFIGURATION
 // =============================================
 const FORM_CONFIG = {
-  // Create a free form at https://formspree.io and paste your endpoint here.
-  endpoint: "https://formspree.io/f/your-form-id",
+  endpoint: CONTACT_FORM_ENDPOINT,
   initialData: { name: "", email: "", message: "" } as FormData,
   fields: [
     {
