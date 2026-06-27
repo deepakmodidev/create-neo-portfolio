@@ -18,7 +18,7 @@
   </a>
 </p>
 
-Create a modern, customizable developer portfolio in seconds — with a single command. Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS 4**. Zero config, no API keys, no environment variables — just edit one file and deploy.
+Create a modern, customizable developer portfolio in seconds - with a single command. Built with **Next.js 16**, **React 19**, **TypeScript**, and **Tailwind CSS 4**. Zero config, no API keys, no environment variables - just edit one file and deploy.
 
 <p align="center">
   <img src="./public/banner.webp" alt="Neo Portfolio CLI" width="700" />
@@ -57,32 +57,32 @@ Almost everything is driven from two files:
 
 Then:
 
-- **Images** — replace the placeholders in `public/` and `src/app/opengraph-image.png` with your own.
-- **Contact form** — set `CONTACT_FORM_ENDPOINT` in `data.ts` (free endpoint at [Formspree](https://formspree.io/forms)).
-- **Meeting button** — set your cal.com handle in `data.ts` (`USER_NAMES.calUsername`).
-- **Sections** — add, remove, or reorder them in `src/app/page.tsx`.
+- **Images** - replace the placeholders in `public/` and `src/app/opengraph-image.png` with your own.
+- **Contact form** - set `CONTACT_FORM_ENDPOINT` in `data.ts` (free endpoint at [Formspree](https://formspree.io/forms)).
+- **Meeting button** - set your cal.com handle in `data.ts` (`USER_NAMES.calUsername`).
+- **Sections** - add, remove, or reorder them in `src/app/page.tsx`.
 
-> Change your name in `data.ts` and it updates everywhere — navbar, metadata, JSON-LD, sitemap, and the GitHub contribution graph all follow automatically.
+> Change your name in `data.ts` and it updates everywhere - navbar, metadata, JSON-LD, sitemap, and the GitHub contribution graph all follow automatically.
 
 ---
 
 ## ✨ Features
 
-- **Modern stack** — Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + TypeScript
-- **Zero config** — no environment variables or API keys required
-- **Content-driven** — everything lives in `data.ts` / `projects.ts`
-- **Dedicated project pages** — each project gets its own `/projects/<slug>` route
+- **Modern stack** - Next.js 16 (App Router) + React 19 + Tailwind CSS 4 + TypeScript
+- **Zero config** - no environment variables or API keys required
+- **Content-driven** - everything lives in `data.ts` / `projects.ts`
+- **Dedicated project pages** - each project gets its own `/projects/<slug>` route
 - **Live GitHub contribution graph** as a banner
 - **Dark / light theme** with system preference + smooth toggle
-- **SEO-ready** — metadata, JSON-LD, OpenGraph image, `sitemap.xml`, `robots.txt`
-- **Polished details** — animated canvas cursor, glassy buttons, smooth scrolling
+- **SEO-ready** - metadata, JSON-LD, OpenGraph image, `sitemap.xml`, `robots.txt`
+- **Polished details** - animated canvas cursor, glassy buttons, smooth scrolling
 - **Fully responsive** and fast out of the box
 
 ---
 
 ## 🚀 Deploy
 
-Deploy to [Vercel](https://vercel.com/import) (recommended) or any platform that supports Next.js — push to GitHub and import the repo.
+Deploy to [Vercel](https://vercel.com/import) (recommended) or any platform that supports Next.js - push to GitHub and import the repo.
 
 ---
 

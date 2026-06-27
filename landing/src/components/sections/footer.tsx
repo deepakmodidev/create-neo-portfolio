@@ -1,92 +1,68 @@
-import { Github, GalleryHorizontalEnd } from "lucide-react";
+import { Github, Package, Linkedin } from "lucide-react";
+
+const links = [
+  {
+    href: "https://github.com/deepakmodidev/create-neo-portfolio",
+    label: "GitHub",
+    icon: Github,
+  },
+  {
+    href: "https://www.npmjs.com/package/create-neo-portfolio",
+    label: "npm",
+    icon: Package,
+  },
+  {
+    href: "https://www.linkedin.com/in/deepakmodidev/",
+    label: "LinkedIn",
+    icon: Linkedin,
+  },
+];
 
 export default function Footer() {
   return (
-    <footer className="py-12 px-4 bg-gray-950/80 border-t backdrop-blur-md border-white/5 font-medium">
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
-          <div className="text-center md:text-left">
-            <div className="flex items-center justify-center md:justify-start gap-2 mb-4">
-              <GalleryHorizontalEnd className="h-6 w-6 text-white" />
-              <span className="text-xl font-bold text-white">
-                Neo Portfolio
-              </span>
-            </div>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Create Modern Portfolio in One Command
-            </p>
+    <footer className="px-4 py-8">
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <div className="text-base font-semibold">
+            neo<span className="text-link">.</span>portfolio
           </div>
-
-          {/* Socials Section */}
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-4">Socials</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/deepakmodidev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
-                  LinkedIn
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://github.com/deepakmodidev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
-                  GitHub
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Package Section */}
-          <div className="text-center md:text-left">
-            <h3 className="text-white font-semibold mb-4">Package</h3>
-            <ul className="space-y-2">
-              <li>
-                <a
-                  href="https://www.npmjs.com/package/create-neo-portfolio"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors text-sm"
-                >
-                  NPM Package
-                </a>
-              </li>
-            </ul>
-          </div>
+          <p className="mt-1 text-sm text-muted-foreground">
+            A developer portfolio, scaffolded in one command.
+          </p>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-white/10 pt-8">
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-gray-400">
-            <span>Built by</span>
+        <nav className="flex items-center gap-4" aria-label="Footer links">
+          {links.map(({ href, label, icon: Icon }) => (
             <a
-              href="https://github.com/deepakmodidev"
+              key={label}
+              href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-gray-300 text-white font-semibold transition-colors"
+              className="flex items-center gap-1.5 text-sm text-muted-foreground"
             >
-              deepakmodidev
+              <Icon className="h-4 w-4" />
+              {label}
             </a>
-            <span className="hidden sm:inline">•</span>
-            <a
-              href="https://github.com/deepakmodidev/create-neo-portfolio"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-gray-300 text-white flex items-center gap-1 font-semibold transition-colors"
-            >
-              <Github className="h-4 w-4" />
-              Open Source
-            </a>
-          </div>
-        </div>
+          ))}
+        </nav>
+      </div>
+
+      <div className="mono mt-6 flex flex-col gap-1 border-t border-dashed border-border pt-5 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+        <span>
+          © 2026{" "}
+          <a
+            href="https://deepakmodi.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted-foreground transition-colors"
+          >
+            deepakmodidev
+          </a>{" "}
+          · MIT licensed
+        </span>
+        <span>
+          press <span className="text-foreground">d</span> to switch theme
+        </span>
       </div>
     </footer>
   );
