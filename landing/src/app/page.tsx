@@ -28,7 +28,7 @@ export default function Home() {
       <GridPattern />
 
       <div className="relative flex min-h-screen flex-col items-center px-2">
-        <main className="relative z-10 mx-auto w-full max-w-3xl border-x border-dashed border-border">
+        <main className="relative z-10 mx-auto w-full max-w-3xl border-x border-dashed border-border bg-background">
           <Header />
 
           {sections.map((section) => (

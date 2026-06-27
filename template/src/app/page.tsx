@@ -30,7 +30,7 @@ export default function Home() {
 
   return (
     <div className="font-sans min-h-screen flex flex-col items-center justify-center relative px-2">
-      <main className="relative z-10 max-w-3xl w-full mx-auto border-x border-dashed border-border">
+      <main className="relative z-10 max-w-3xl w-full mx-auto border-x border-dashed border-border bg-background">
         {/* Initial Top Separator */}
         <SectionSeparator />
 

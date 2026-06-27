@@ -356,7 +356,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
 
   return (
     <div className="font-sans min-h-screen flex flex-col items-center relative px-2">
-      <main className="relative z-10 max-w-3xl w-full mx-auto border-x border-dashed border-border">
+      <main className="relative z-10 max-w-3xl w-full mx-auto border-x border-dashed border-border bg-background">
         <SectionSeparator />
         <ProjectHeader project={project} />
         <SectionSeparator />
