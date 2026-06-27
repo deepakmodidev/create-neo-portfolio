@@ -29,7 +29,12 @@ export default function Home() {
 
       <div className="relative flex min-h-screen flex-col items-center px-2">
         <main className="relative z-10 mx-auto w-full max-w-3xl border-x border-dashed border-border bg-background">
-          <Header />
+          {/* Sticky nav block: upper separator + navbar + lower separator */}
+          <div className="sticky top-0 z-40 bg-background">
+            <SectionSeparator />
+            <Header />
+            <SectionSeparator />
+          </div>
 
           {sections.map((section) => (
             <React.Fragment key={section.key}>
