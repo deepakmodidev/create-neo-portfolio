@@ -195,12 +195,9 @@ html.lenis body {
     border-color: hsl(var(--border-hover));
   }
 
-  /* Triangular grid gutters — brighter on the dark background */
+  /* Triangular grid gutters — matches the generated portfolio template */
   .grid-pattern {
-    opacity: 0.5;
-  }
-  .dark .grid-pattern {
-    opacity: 0.8;
+    opacity: 0.4;
   }
 
   .mono {

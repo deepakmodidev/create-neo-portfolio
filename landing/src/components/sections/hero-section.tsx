@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="px-4 pb-10 pt-10 sm:pt-14">
       <span className="badge mono inline-flex items-center gap-2 px-2.5 py-1 text-xs text-muted-foreground">
         <span className="h-1.5 w-1.5 bg-link" />
-        v1.2.1 · open source
+        v1.2.2 · open source
       </span>
 
       <h1 className="mt-5 text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl md:text-5xl">
